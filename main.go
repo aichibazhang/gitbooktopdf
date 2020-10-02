@@ -1,9 +1,15 @@
 package main
 
-import "gitbooktopdf/html"
+import (
+	"gitbooktopdf/convert"
+	"gitbooktopdf/crawl"
+	"os"
+)
 
 func main() {
-	//books := html.GetUrl()
-	//html.CrawlUrl(books)
-	html.ReplaceHtml()
+	// 获取所有html
+	books:=crawl.GetUrl()
+	crawl.CreateConfigJson(books)
+	args := os.Args[1:]
+	convert.Convert(args[0])
 }
