@@ -24,7 +24,6 @@ type Converter struct {
 }
 
 func NewConverter(configFile string) (convert *Converter, err error) {
-	fmt.Println("配置路径为:",configFile)
 	cfg, err := parseConfig(configFile)
 	if err != nil {
 		fmt.Println(err, "config文件解析错误,请检查config")
@@ -47,6 +46,7 @@ func NewConverter(configFile string) (convert *Converter, err error) {
 	}
 	return
 }
+// 根据传入路径生成pdf
 func Convert(configPath string) {
 	convert, _ := NewConverter(configPath)
 	defer convert.converterDefer()

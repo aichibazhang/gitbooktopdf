@@ -1,0 +1,5 @@
+website:
+  base_url: https://tsf-gitbook-1257356411.cos.ap-chengdu.myqcloud.com/1.12.4/usage/
+  url: https://tsf-gitbook-1257356411.cos.ap-chengdu.myqcloud.com/1.12.4/usage/%E4%BA%A7%E5%93%81%E7%AE%80%E4%BB%8B/%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF.html
+article:
+  title: Tencent Service Framework

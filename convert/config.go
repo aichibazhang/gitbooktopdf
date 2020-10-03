@@ -2,7 +2,9 @@ package convert
 
 import (
 	"encoding/json"
+	yaml "gopkg.in/yaml.v2"
 	"io/ioutil"
+	"log"
 	"strings"
 )
 
@@ -28,7 +30,18 @@ type Config struct {
 	MarginBottom string   `json:"margin_bottom"` //PDF文档左边距，写数字即可，默认72pt
 	More         []string `json:"more"`          //更多导出选项[PDF导出选项，具体参考：https://manual.calibre-ebook.com/generated/en/ebook-convert.html#pdf-output-options]
 	Toc          []Toc    `json:"toc"`           //目录
-	Link []string `json:"-"` //这个不需要赋值
+	Link         []string `json:"-"`             //这个不需要赋值
+}
+type WebSite struct {
+	Url     string `yaml:"url"`      // 爬取的gitbook url
+	BaseUrl string `yaml:"base_url"` // 爬取的gitbook baseUrl
+}
+type Article struct {
+	Title string `yaml:"title"`
+}
+type ConfigFile struct {
+	WebSite WebSite `yaml:"website"`
+	Article Article `yaml:"article"`
 }
 
 //目录结构
@@ -72,6 +85,21 @@ func parseConfig(configFile string) (cfg Config, err error) {
 	var b []byte
 	if b, err = ioutil.ReadFile(configFile); err == nil {
 		err = json.Unmarshal(b, &cfg)
+	}
+	return
+}
+
+// 获取初始配置
+func InitConfig() (cfg ConfigFile, err error) {
+	yamlFile, err := ioutil.ReadFile("config.yaml")
+	if err != nil {
+		log.Printf("yamlFile.Get err #%v ", err)
+		return cfg, err
+	}
+	yaml.Unmarshal(yamlFile, &cfg)
+	if err != nil {
+		log.Fatalf("Unmarshal: %v", err)
+		return cfg, err
 	}
 	return
 }

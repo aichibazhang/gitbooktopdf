@@ -3,12 +3,14 @@ package crawl
 import (
 	"encoding/json"
 	"fmt"
+	"gitbooktopdf/convert"
 	"github.com/antchfx/htmlquery"
 	"io/ioutil"
 	"os"
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 )
 
 type GitBook struct {
@@ -18,13 +20,17 @@ type GitBook struct {
 	Link  string `json:"link"`
 }
 
-var tocs map[int]string
+var (
+	tocs    map[int]string
+	url     string
+	baseUrl string
+	folder  = `crawl/input/`
+)
 
-const url = `https://tsf-gitbook-1257356411.cos.ap-chengdu.myqcloud.com/1.12.4/usage/%E4%BA%A7%E5%93%81%E7%AE%80%E4%BB%8B/%E4%BA%A7%E5%93%81%E6%A6%82%E8%BF%B0.html`
-const baseUrl = `https://tsf-gitbook-1257356411.cos.ap-chengdu.myqcloud.com/1.12.4/usage/`
-const folder = `crawl/input/`
-
-func GetUrl() (books []*GitBook) {
+// 获取所有gitbook访问url
+func GetUrl(cfg convert.ConfigFile) (books []*GitBook) {
+	baseUrl = cfg.WebSite.BaseUrl
+	url = cfg.WebSite.Url
 	if doc, err := htmlquery.LoadURL(url); err == nil {
 		var pids []int
 		tocs = make(map[int]string)
@@ -74,20 +80,26 @@ func GetUrl() (books []*GitBook) {
 	}
 	return
 }
-func CrawlUrl(urls []*GitBook) {
+
+// 抓取所有url并凭借页面内容
+func CrawlUrl(urls []*GitBook, wg sync.WaitGroup) {
 	page := make(chan GitBook)
 	for _, uri := range urls {
-		go SpiderPage(*uri, page)
+		wg.Add(1)
+		go SpiderPage(*uri, page, wg)
 	}
 
 	for i := 0; i < len(urls); i++ {
 		fmt.Println(<-page)
 	}
 }
-func CrawlSummary() {
+
+// 爬取并生成文档目录
+func CrawlSummary(wg sync.WaitGroup) {
 	toc := make(chan string)
 	for index, title := range tocs {
-		go SpiderSummary(index, title, toc)
+		wg.Add(1)
+		go SpiderSummary(index, title, toc, wg)
 	}
 	for i := 0; i < len(tocs); i++ {
 		fmt.Println(<-toc)
@@ -95,7 +107,7 @@ func CrawlSummary() {
 }
 
 // 爬取页面
-func SpiderPage(book GitBook, page chan GitBook) {
+func SpiderPage(book GitBook, page chan GitBook, wg sync.WaitGroup) {
 	if doc, err := htmlquery.LoadURL(book.Link); err == nil {
 		body := htmlquery.Find(doc, "//div[@class='page-inner']")
 		if len(body) != 0 {
@@ -117,9 +129,10 @@ func SpiderPage(book GitBook, page chan GitBook) {
 			ioutil.WriteFile(folder+strconv.Itoa(book.Id)+".html", []byte(htmlTempleta), os.ModePerm)
 		}
 	}
+	wg.Done()
 	page <- book
 }
-func SpiderSummary(key int, value string, page chan string) {
+func SpiderSummary(key int, value string, page chan string, wg sync.WaitGroup) {
 	htmlTempleta := `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -134,9 +147,20 @@ func SpiderSummary(key int, value string, page chan string) {
 </html>`
 	htmlTempleta = fmt.Sprintf(htmlTempleta, value, value)
 	ioutil.WriteFile(folder+strconv.Itoa(key)+".html", []byte(htmlTempleta), os.ModePerm)
+	wg.Done()
 	page <- value
 }
-func CreateConfigJson(books []*GitBook) {
+
+/**
+用途: 根据传入条件自动生成json文件
+注释:
+1. 为什么会有两个路径?一个路径为基础url,用来拼接url,出现第二个url是因为第一个url可能无法访问
+参考:
+根路径无法访问,只能找一个子目录来爬取所有title
+https://tsf-gitbook-1257356411.cos.ap-chengdu.myqcloud.com/1.12.4/usage
+https://tsf-gitbook-1257356411.cos.ap-chengdu.myqcloud.com/1.12.4/usage/%E4%BA%A7%E5%93%81%E7%AE%80%E4%BB%8B/%E4%BA%A7%E5%93%81%E6%A6%82%E8%BF%B0.html
+*/
+func CreateConfigJson(books []*GitBook, cfg convert.ConfigFile) {
 	for i := range books {
 		book := books[i]
 		if len(book.Link) != 0 {
@@ -166,7 +190,7 @@ func CreateConfigJson(books []*GitBook) {
 		`{
   "charset": "utf-8",
   "cover": "",
-  "date": "",
+  "date": "2020-02-02",
   "description": "diaosi.love 程序员福利:免费翻墙,实用工具,你值得拥有!!!",
   "footer": "<p style='color:#8E8E8E;font-size:12px;'>本文档由 <a href='https://www.diaosi.love' style='text-decoration:none;color:#1abc9c;font-weight:bold;'>福利工具(diaosi.love)</a> 构建 <span style='float:right'>- _PAGENUM_ -</span></p>",
   "header": "<p style='color:#8E8E8E;font-size:12px;'>_SECTION_</p>",
@@ -175,7 +199,7 @@ func CreateConfigJson(books []*GitBook) {
   "creator": "福利(diaosi.love)",
   "publisher": "福利(diaosi.love)",
   "contributor": "福利(diaosi.love)",
-  "title": "腾讯微服务平台开发文档",
+  "title": "%v",
   "format": "pdf",
   "font_size": "13",
   "paper_size": "a4",
@@ -186,6 +210,6 @@ func CreateConfigJson(books []*GitBook) {
   "more": [],
   "toc": %v
 }`
-	jsonTemplate = fmt.Sprintf(jsonTemplate, string(b))
-	ioutil.WriteFile(folder+"test.json", []byte(jsonTemplate), os.ModePerm)
+	jsonTemplate = fmt.Sprintf(jsonTemplate, cfg.Article.Title, string(b))
+	ioutil.WriteFile(folder+"config.json", []byte(jsonTemplate), os.ModePerm)
 }
