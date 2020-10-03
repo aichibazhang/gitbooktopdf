@@ -266,7 +266,6 @@ func (this *Converter) convertToPdf() error {
 	if len(this.Config.More) > 0 {
 		args = append(args, this.Config.More...)
 	}
-	fmt.Println(args)
 	cmd := exec.Command(ebookConvert, args...)
 	return cmd.Run()
 }

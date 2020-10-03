@@ -189,7 +189,7 @@ func CreateConfigJson(books []*GitBook, cfg convert.ConfigFile) {
 	jsonTemplate :=
 		`{
   "charset": "utf-8",
-  "cover": "",
+  "cover": "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3272915047,480396222&fm=26&gp=0.jpg",
   "date": "2020-02-02",
   "description": "diaosi.love 程序员福利:免费翻墙,实用工具,你值得拥有!!!",
   "footer": "<p style='color:#8E8E8E;font-size:12px;'>本文档由 <a href='https://www.diaosi.love' style='text-decoration:none;color:#1abc9c;font-weight:bold;'>福利工具(diaosi.love)</a> 构建 <span style='float:right'>- _PAGENUM_ -</span></p>",

@@ -1,0 +1,672 @@
+{
+  "charset": "utf-8",
+  "cover": "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3272915047,480396222&fm=26&gp=0.jpg",
+  "date": "2020-02-02",
+  "description": "diaosi.love 程序员福利:免费翻墙,实用工具,你值得拥有!!!",
+  "footer": "<p style='color:#8E8E8E;font-size:12px;'>本文档由 <a href='https://www.diaosi.love' style='text-decoration:none;color:#1abc9c;font-weight:bold;'>福利工具(diaosi.love)</a> 构建 <span style='float:right'>- _PAGENUM_ -</span></p>",
+  "header": "<p style='color:#8E8E8E;font-size:12px;'>_SECTION_</p>",
+  "identifier": "",
+  "language": "zh-CN",
+  "creator": "福利(diaosi.love)",
+  "publisher": "福利(diaosi.love)",
+  "contributor": "福利(diaosi.love)",
+  "title": "Tencent Service Framework",
+  "format": "pdf",
+  "font_size": "13",
+  "paper_size": "a4",
+  "margin_left": "72",
+  "margin_right": "72",
+  "margin_top": "72",
+  "margin_bottom": "72",
+  "more": [],
+  "toc": [
+    {
+      "title": "1.1 产品概述",
+      "id": 21,
+      "pid": 1,
+      "link": "21.html"
+    },
+    {
+      "title": "1.2 产品功能",
+      "id": 22,
+      "pid": 1,
+      "link": "22.html"
+    },
+    {
+      "title": "1.3 产品优势",
+      "id": 23,
+      "pid": 1,
+      "link": "23.html"
+    },
+    {
+      "title": "1.4 应用场景",
+      "id": 24,
+      "pid": 1,
+      "link": "24.html"
+    },
+    {
+      "title": "2.1 Demo 工程概述",
+      "id": 31,
+      "pid": 2,
+      "link": "31.html"
+    },
+    {
+      "title": "2.2 服务注册与发现",
+      "id": 32,
+      "pid": 2,
+      "link": "32.html"
+    },
+    {
+      "title": "2.3 轻量级服务注册中心",
+      "id": 33,
+      "pid": 2,
+      "link": "33.html"
+    },
+    {
+      "title": "2.5 分布式配置",
+      "id": 34,
+      "pid": 2,
+      "link": "34.html"
+    },
+    {
+      "title": "2.6 服务鉴权",
+      "id": 35,
+      "pid": 2,
+      "link": "35.html"
+    },
+    {
+      "title": "2.7 服务限流",
+      "id": 36,
+      "pid": 2,
+      "link": "36.html"
+    },
+    {
+      "title": "2.8 服务路由",
+      "id": 37,
+      "pid": 2,
+      "link": "37.html"
+    },
+    {
+      "title": "2.9 参数传递",
+      "id": 38,
+      "pid": 2,
+      "link": "38.html"
+    },
+    {
+      "title": "2.10 调用链",
+      "id": 39,
+      "pid": 2,
+      "link": "39.html"
+    },
+    {
+      "title": "2.11 API 注册",
+      "id": 310,
+      "pid": 2,
+      "link": "310.html"
+    },
+    {
+      "title": "2.12 服务监控",
+      "id": 311,
+      "pid": 2,
+      "link": "311.html"
+    },
+    {
+      "title": "2.13 SDK 下载",
+      "id": 312,
+      "pid": 2,
+      "link": "312.html"
+    },
+    {
+      "title": "2.14 SDK 更新日志",
+      "id": 313,
+      "pid": 2,
+      "link": "313.html"
+    },
+    {
+      "title": "3.1 TSF Mesh 介绍",
+      "id": 41,
+      "pid": 3,
+      "link": "41.html"
+    },
+    {
+      "title": "3.2 Mesh Demo 介绍",
+      "id": 42,
+      "pid": 3,
+      "link": "42.html"
+    },
+    {
+      "title": "3.3 Mesh 开发使用指引",
+      "id": 43,
+      "pid": 3,
+      "link": "43.html"
+    },
+    {
+      "title": "3.4 Mesh 应用(容器篇)",
+      "id": 44,
+      "pid": 3,
+      "link": "44.html"
+    },
+    {
+      "title": "3.5 Mesh 应用(虚拟机篇)",
+      "id": 45,
+      "pid": 3,
+      "link": "45.html"
+    },
+    {
+      "title": "3.6 Mesh 运维接口说明",
+      "id": 46,
+      "pid": 3,
+      "link": "46.html"
+    },
+    {
+      "title": "4.1 Dubbo Demo 工程概述",
+      "id": 51,
+      "pid": 4,
+      "link": "51.html"
+    },
+    {
+      "title": "4.2 Dubbo 应用接入 TSF",
+      "id": 52,
+      "pid": 4,
+      "link": "52.html"
+    },
+    {
+      "title": "5.1 使用容器部署微服务",
+      "id": 61,
+      "pid": 5,
+      "link": "61.html"
+    },
+    {
+      "title": "5.2 使用虚拟机部署微服务",
+      "id": 62,
+      "pid": 5,
+      "link": "62.html"
+    },
+    {
+      "title": "6.1 虚拟机集群",
+      "id": 71,
+      "pid": 6,
+      "link": "71.html"
+    },
+    {
+      "title": "6.2 容器集群",
+      "id": 72,
+      "pid": 6,
+      "link": "72.html"
+    },
+    {
+      "title": "6.3 命名空间",
+      "id": 73,
+      "pid": 6,
+      "link": "73.html"
+    },
+    {
+      "title": "7.1 应用概述",
+      "id": 81,
+      "pid": 7,
+      "link": "81.html"
+    },
+    {
+      "title": "7.2 应用基本操作",
+      "id": 82,
+      "pid": 7,
+      "link": "82.html"
+    },
+    {
+      "title": "7.3 部署组概述",
+      "id": 83,
+      "pid": 7,
+      "link": "83.html"
+    },
+    {
+      "title": "7.4 虚拟机应用部署组",
+      "id": 84,
+      "pid": 7,
+      "link": "84.html"
+    },
+    {
+      "title": "7.5 容器应用部署组",
+      "id": 85,
+      "pid": 7,
+      "link": "85.html"
+    },
+    {
+      "title": "7.6 容器部署组资源限制",
+      "id": 86,
+      "pid": 7,
+      "link": "86.html"
+    },
+    {
+      "title": "7.7 程序包管理",
+      "id": 87,
+      "pid": 7,
+      "link": "87.html"
+    },
+    {
+      "title": "7.8 上传程序包要求",
+      "id": 88,
+      "pid": 7,
+      "link": "88.html"
+    },
+    {
+      "title": "7.9 镜像仓库",
+      "id": 89,
+      "pid": 7,
+      "link": "89.html"
+    },
+    {
+      "title": "7.10 制作容器镜像",
+      "id": 810,
+      "pid": 7,
+      "link": "810.html"
+    },
+    {
+      "title": "7.11 弹性伸缩",
+      "id": 811,
+      "pid": 7,
+      "link": "811.html"
+    },
+    {
+      "title": "8.1 配置管理概述",
+      "id": 91,
+      "pid": 8,
+      "link": "91.html"
+    },
+    {
+      "title": "8.2 应用配置",
+      "id": 92,
+      "pid": 8,
+      "link": "92.html"
+    },
+    {
+      "title": "8.3 全局配置",
+      "id": 93,
+      "pid": 8,
+      "link": "93.html"
+    },
+    {
+      "title": "8.4 配置模板",
+      "id": 94,
+      "pid": 8,
+      "link": "94.html"
+    },
+    {
+      "title": "8.5 文件配置",
+      "id": 95,
+      "pid": 8,
+      "link": "95.html"
+    },
+    {
+      "title": "8.6 加密配置",
+      "id": 96,
+      "pid": 8,
+      "link": "96.html"
+    },
+    {
+      "title": "9.1 服务基本操作",
+      "id": 101,
+      "pid": 9,
+      "link": "101.html"
+    },
+    {
+      "title": "9.2 系统和业务自定义标签",
+      "id": 102,
+      "pid": 9,
+      "link": "102.html"
+    },
+    {
+      "title": "9.3 API 列表",
+      "id": 103,
+      "pid": 9,
+      "link": "103.html"
+    },
+    {
+      "title": "9.4 服务鉴权原理",
+      "id": 104,
+      "pid": 9,
+      "link": "104.html"
+    },
+    {
+      "title": "9.5 服务鉴权使用说明",
+      "id": 105,
+      "pid": 9,
+      "link": "105.html"
+    },
+    {
+      "title": "9.6 服务限流原理及使用",
+      "id": 106,
+      "pid": 9,
+      "link": "106.html"
+    },
+    {
+      "title": "9.7 服务路由基本原理",
+      "id": 107,
+      "pid": 9,
+      "link": "107.html"
+    },
+    {
+      "title": "9.8 服务路由使用方法",
+      "id": 108,
+      "pid": 9,
+      "link": "108.html"
+    },
+    {
+      "title": "9.9 服务路由最佳实践",
+      "id": 109,
+      "pid": 9,
+      "link": "109.html"
+    },
+    {
+      "title": "10.1 微服务网关使用概述",
+      "id": 111,
+      "pid": 10,
+      "link": "111.html"
+    },
+    {
+      "title": "10.2 微服务网关部署与配置",
+      "id": 112,
+      "pid": 10,
+      "link": "112.html"
+    },
+    {
+      "title": "10.3 微服务网关分组管理",
+      "id": 113,
+      "pid": 10,
+      "link": "113.html"
+    },
+    {
+      "title": "10.4 微服务网关鉴权与限流",
+      "id": 114,
+      "pid": 10,
+      "link": "114.html"
+    },
+    {
+      "title": "10.5 微服务网关密钥对鉴权",
+      "id": 115,
+      "pid": 10,
+      "link": "115.html"
+    },
+    {
+      "title": "10.6 微服务网关常见问题",
+      "id": 116,
+      "pid": 10,
+      "link": "116.html"
+    },
+    {
+      "title": "11.1 服务依赖拓扑",
+      "id": 121,
+      "pid": 11,
+      "link": "121.html"
+    },
+    {
+      "title": "11.2 调用链查询和详情",
+      "id": 122,
+      "pid": 11,
+      "link": "122.html"
+    },
+    {
+      "title": "12.1 概述",
+      "id": 131,
+      "pid": 12,
+      "link": "131.html"
+    },
+    {
+      "title": "12.2 快速入门",
+      "id": 132,
+      "pid": 12,
+      "link": "132.html"
+    },
+    {
+      "title": "12.3 日志配置项",
+      "id": 133,
+      "pid": 12,
+      "link": "133.html"
+    },
+    {
+      "title": "12.4 日志告警",
+      "id": 134,
+      "pid": 12,
+      "link": "134.html"
+    },
+    {
+      "title": "12.5 实时日志",
+      "id": 135,
+      "pid": 12,
+      "link": "135.html"
+    },
+    {
+      "title": "12.6 日志检索",
+      "id": 136,
+      "pid": 12,
+      "link": "136.html"
+    },
+    {
+      "title": "13.1 服务编排基本操作",
+      "id": 141,
+      "pid": 13,
+      "link": "141.html"
+    },
+    {
+      "title": "13.2 使用模板工程",
+      "id": 142,
+      "pid": 13,
+      "link": "142.html"
+    },
+    {
+      "title": "14.1 概述",
+      "id": 151,
+      "pid": 14,
+      "link": "151.html"
+    },
+    {
+      "title": "14.2 开发文档",
+      "id": 152,
+      "pid": 14,
+      "link": "152.html"
+    },
+    {
+      "title": "14.3 控制台基本操作",
+      "id": 153,
+      "pid": 14,
+      "link": "153.html"
+    },
+    {
+      "title": "14.4 样例部署",
+      "id": 154,
+      "pid": 14,
+      "link": "154.html"
+    },
+    {
+      "title": "15.1 灰度发布",
+      "id": 161,
+      "pid": 15,
+      "link": "161.html"
+    },
+    {
+      "title": "15.2 就近路由和跨可用区容灾",
+      "id": 162,
+      "pid": 15,
+      "link": "162.html"
+    },
+    {
+      "title": "16.1 运营端操作手册",
+      "id": 171,
+      "pid": 16,
+      "link": "171.html"
+    },
+    {
+      "title": "17.1 账号系统综述",
+      "id": 181,
+      "pid": 17,
+      "link": "181.html"
+    },
+    {
+      "title": "17.2 账号系统操作说明",
+      "id": 182,
+      "pid": 17,
+      "link": "182.html"
+    },
+    {
+      "title": "18.1 资源管理相关",
+      "id": 191,
+      "pid": 18,
+      "link": "191.html"
+    },
+    {
+      "title": "18.2 应用管理相关",
+      "id": 192,
+      "pid": 18,
+      "link": "192.html"
+    },
+    {
+      "title": "18.3 Spring Cloud 应用接入相关",
+      "id": 193,
+      "pid": 18,
+      "link": "193.html"
+    },
+    {
+      "title": "18.4 Mesh 应用相关",
+      "id": 194,
+      "pid": 18,
+      "link": "194.html"
+    },
+    {
+      "title": "18.5 日志服务相关",
+      "id": 195,
+      "pid": 18,
+      "link": "195.html"
+    },
+    {
+      "title": "18.6 镜像相关",
+      "id": 196,
+      "pid": 18,
+      "link": "196.html"
+    },
+    {
+      "title": "18.7 事务管理相关",
+      "id": 197,
+      "pid": 18,
+      "link": "197.html"
+    },
+    {
+      "title": "19.1 词汇表",
+      "id": 201,
+      "pid": 19,
+      "link": "201.html"
+    },
+    {
+      "title": "1.产品简介",
+      "id": 1,
+      "pid": 0,
+      "link": "1.html"
+    },
+    {
+      "title": "2.Spring Cloud 开发手册",
+      "id": 2,
+      "pid": 0,
+      "link": "2.html"
+    },
+    {
+      "title": "3. TSF Mesh 开发手册",
+      "id": 3,
+      "pid": 0,
+      "link": "3.html"
+    },
+    {
+      "title": "4. Dubbo 应用接入",
+      "id": 4,
+      "pid": 0,
+      "link": "4.html"
+    },
+    {
+      "title": "5. 快速入门",
+      "id": 5,
+      "pid": 0,
+      "link": "5.html"
+    },
+    {
+      "title": "6. 资源中心",
+      "id": 6,
+      "pid": 0,
+      "link": "6.html"
+    },
+    {
+      "title": "7. 应用中心",
+      "id": 7,
+      "pid": 0,
+      "link": "7.html"
+    },
+    {
+      "title": "8. 配置管理",
+      "id": 8,
+      "pid": 0,
+      "link": "8.html"
+    },
+    {
+      "title": "9. 服务治理",
+      "id": 9,
+      "pid": 0,
+      "link": "9.html"
+    },
+    {
+      "title": "10. 微服务网关",
+      "id": 10,
+      "pid": 0,
+      "link": "10.html"
+    },
+    {
+      "title": "11. 数据化运营",
+      "id": 11,
+      "pid": 0,
+      "link": "11.html"
+    },
+    {
+      "title": "12. 日志服务",
+      "id": 12,
+      "pid": 0,
+      "link": "12.html"
+    },
+    {
+      "title": "13. 交付中心",
+      "id": 13,
+      "pid": 0,
+      "link": "13.html"
+    },
+    {
+      "title": "14. 分布式事务",
+      "id": 14,
+      "pid": 0,
+      "link": "14.html"
+    },
+    {
+      "title": "15. 最佳实践",
+      "id": 15,
+      "pid": 0,
+      "link": "15.html"
+    },
+    {
+      "title": "16. 运营端",
+      "id": 16,
+      "pid": 0,
+      "link": "16.html"
+    },
+    {
+      "title": "17. 账号管理及安全",
+      "id": 17,
+      "pid": 0,
+      "link": "17.html"
+    },
+    {
+      "title": "18. 常见问题",
+      "id": 18,
+      "pid": 0,
+      "link": "18.html"
+    },
+    {
+      "title": "19. 词汇表",
+      "id": 19,
+      "pid": 0,
+      "link": "19.html"
+    }
+  ]
+}
