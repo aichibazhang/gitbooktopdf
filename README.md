@@ -1,4 +1,3 @@
-[TOC]
 # 缘由
 一些不规范的gitbook,想要将其转成pdf文件找了很多工具都无法完成
 > 参考此链接: https://tsf-gitbook-1257356411.cos.ap-chengdu.myqcloud.com/1.12.4/usage/%E4%BA%A7%E5%93%81%E7%AE%80%E4%BB%8B/%E4%BA%A7%E5%93%81%E6%A6%82%E8%BF%B0.html
