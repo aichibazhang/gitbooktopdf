@@ -82,32 +82,20 @@ func GetUrl(cfg convert.ConfigFile) (books []*GitBook) {
 }
 
 // 抓取所有url并凭借页面内容
-func CrawlUrl(urls []*GitBook, wg sync.WaitGroup) {
-	page := make(chan GitBook)
+func CrawlUrl(urls []*GitBook, wg *sync.WaitGroup) {
 	for _, uri := range urls {
 		wg.Add(1)
-		go SpiderPage(*uri, page, wg)
+		go SpiderPage(*uri, wg)
 	}
-
-	for i := 0; i < len(urls); i++ {
-		fmt.Println(<-page)
-	}
-}
-
-// 爬取并生成文档目录
-func CrawlSummary(wg sync.WaitGroup) {
-	toc := make(chan string)
 	for index, title := range tocs {
 		wg.Add(1)
-		go SpiderSummary(index, title, toc, wg)
+		go SpiderSummary(index, title, wg)
 	}
-	for i := 0; i < len(tocs); i++ {
-		fmt.Println(<-toc)
-	}
+	wg.Wait()
 }
 
 // 爬取页面
-func SpiderPage(book GitBook, page chan GitBook, wg sync.WaitGroup) {
+func SpiderPage(book GitBook, wg *sync.WaitGroup) {
 	if doc, err := htmlquery.LoadURL(book.Link); err == nil {
 		body := htmlquery.Find(doc, "//div[@class='page-inner']")
 		if len(body) != 0 {
@@ -129,10 +117,9 @@ func SpiderPage(book GitBook, page chan GitBook, wg sync.WaitGroup) {
 			ioutil.WriteFile(folder+strconv.Itoa(book.Id)+".html", []byte(htmlTempleta), os.ModePerm)
 		}
 	}
-	wg.Done()
-	page <- book
+			wg.Done()
 }
-func SpiderSummary(key int, value string, page chan string, wg sync.WaitGroup) {
+func SpiderSummary(key int, value string, wg *sync.WaitGroup) {
 	htmlTempleta := `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -147,8 +134,7 @@ func SpiderSummary(key int, value string, page chan string, wg sync.WaitGroup) {
 </html>`
 	htmlTempleta = fmt.Sprintf(htmlTempleta, value, value)
 	ioutil.WriteFile(folder+strconv.Itoa(key)+".html", []byte(htmlTempleta), os.ModePerm)
-	wg.Done()
-	page <- value
+	defer wg.Done()
 }
 
 /**
